@@ -1,0 +1,53 @@
+@import "../../../../assets/scss/abstracts/variables";
+.market-status {
+  padding: 10px;
+  margin: 5px;
+  &--active {
+    background-color: $color-success;
+    color: #fff;
+  }
+  &--error {
+    background-color: $color-error;
+    color: #fff;
+  }
+  &__label {
+    padding: 10px 0;
+    font-weight: 500;
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+  fa-icon {
+    padding-left: 10px;
+  }
+  &__info {
+    display: flex;
+    width: 100%;
+    &:first-child {
+      align-items: center;
+    }
+    div {
+      &:first-child {
+        width: 70%;
+      }
+      &:last-child {
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.tooltip {
+  display: flex;
+  flex-direction: column;
+  &__info {
+    display: flex;
+    flex-direction: row;
+    div {
+      &:last-child {
+        font-weight: 500;
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+@import "../../../../assets/scss/abstracts/variables";
+
+.region-card {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  border-bottom: 2px solid $color-primary;
+  border-radius: 5px;
+  &__title {
+    padding: 10px 10px;
+    font-weight: 500;
+  }
+  &__markets {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto 1fr;
+  }
+}

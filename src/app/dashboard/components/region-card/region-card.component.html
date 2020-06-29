@@ -1,0 +1,16 @@
+<div class="region-card">
+  <h2 class="region-card__title">{{ region.regionCode }}</h2>
+  <div class="region-card__webservice">
+    <app-market-server-status
+      [label]="'Webservice status'"
+      [marketStatus]="region.wsStatus"
+    ></app-market-server-status>
+  </div>
+  <div class="region-card__markets">
+    <app-market-server-status
+      *ngFor="let key of region.status | objKey"
+      [label]="key"
+      [marketStatus]="region.status[key]"
+    ></app-market-server-status>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<div
+  class="market-status"
+  [tooltip]="tooltipTemplate"
+  content-type="template"
+  hide-delay="0"
+  [ngClass]="{
+    'market-status--active': marketStatus.serverResponseCode === 200,
+    'market-status--error': marketStatus.serverResponseCode !== 200
+  }"
+>
+  <div class="market-status__info">
+    <h3 class="market-status__label" (click)="openLink()">
+      {{ label | uppercase }}
+    </h3>
+    <fa-icon
+      [styles]="{
+        color: '#fff'
+      }"
+      [icon]="
+        marketStatus.serverResponseCode === 200
+          ? faCheckCircle
+          : faExclamationCircle
+      "
+    ></fa-icon>
+  </div>
+</div>
+
+<ng-template #tooltipTemplate>
+  <div class="tooltip">
+    <div class="tooltip__info">
+      <div>Server Status:</div>
+      <div>
+        {{ marketStatus.serverStatus }}
+      </div>
+    </div>
+    <div class="tooltip__info">
+      <div>Response Code:</div>
+      <div>{{ marketStatus.serverResponseCode }}</div>
+    </div>
+    <div class="tooltip__info">
+      <div>Response Type:</div>
+      <div>{{ marketStatus.responseType }}</div>
+    </div>
+    <div class="tooltip__info">
+      <div>Last Updated:</div>
+      <div>{{ marketStatus.lastUpdated | date: "medium" }}</div>
+    </div>
+  </div>
+</ng-template>

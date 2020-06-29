@@ -1,0 +1,13 @@
+import { createAction, props } from '@ngrx/store';
+import { Region } from '../reducers/dashboard.reducer';
+import { RegionStatus } from '../reducers/region-list.reducer';
+
+export const getServerStatusesRequest = createAction(
+  '[Dashboard Page] Get Region Statuses Request',
+  props<{ regions: Region[]; regionUrls: string[]; wsUrls: string[] }>()
+);
+
+export const getServerStatusesSuccess = createAction(
+  '[Dashboard Page] Get Region Statuses Success',
+  props<{ regions: RegionStatus[] }>()
+);

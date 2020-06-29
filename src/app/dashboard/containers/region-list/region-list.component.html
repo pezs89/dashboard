@@ -1,0 +1,9 @@
+<div class="region-list">
+  <ng-container *ngIf="!(loading$ | async)">
+    <app-region-card
+      [@fadeIn]
+      *ngFor="let region of regions$ | async"
+      [region]="region"
+    ></app-region-card>
+  </ng-container>
+</div>
