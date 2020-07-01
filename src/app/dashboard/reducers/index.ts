@@ -44,6 +44,11 @@ export const selectDashboardRegionsState = createSelector(
   (state) => state[fromDashboard.dashboardFeatureKey].regions
 );
 
+export const selectSelectedEnvirontmentSate = createSelector(
+  selectDashboardModuleState,
+  (state) => state[fromDashboard.dashboardFeatureKey].selectedEnvironment
+);
+
 export const selectRegionListState = createSelector(
   selectDashboardModuleState,
   (state) => state[fromRegionList.regionListFeatureKey].regionStatuses

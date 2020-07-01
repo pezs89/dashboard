@@ -10,7 +10,7 @@ import { Observable, timer, Subject } from 'rxjs';
 
 import { AppState } from 'src/app/reducers/app.reducer';
 import { DashboardActions } from '../actions';
-import { Region } from '../reducers/dashboard.reducer';
+import { Environments } from '../reducers/dashboard.reducer';
 import * as fromDashboard from '../reducers/index';
 
 @Component({
@@ -20,7 +20,7 @@ import * as fromDashboard from '../reducers/index';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardPageComponent implements OnInit, OnDestroy {
-  private regions$: Observable<Region[]>;
+  environment$: Observable<Environments>;
   private destroy$ = new Subject();
 
   constructor(private store: Store<AppState>) {}
@@ -29,29 +29,20 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     timer(0, 10 * 60 * 1000)
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {
-        this.regions$ = this.store.pipe(
-          select(fromDashboard.selectDashboardRegionsState)
+        this.environment$ = this.store.pipe(
+          select(fromDashboard.selectSelectedEnvirontmentSate)
         );
-        this.regions$.subscribe(regions => {
-          const regionMarkets = regions.map(region => region.markets);
-          const regionUrls = regionMarkets
-            .map(markets => Object.values(markets))
-            .reduce((acc, curr) => {
-              curr.forEach(url => {
-                acc.push(url);
-              });
-              return acc;
-            }, []);
-          const wsUrls = regions.map(region => region.webserviceUrl);
+        this.environment$.subscribe(environment => {
           this.store.dispatch(
-            DashboardActions.getServerStatusesRequest({
-              regions,
-              regionUrls,
-              wsUrls,
-            })
+            DashboardActions.getNewServerStatuses({ environment })
           );
         });
       });
+  }
+
+  setEnvironment(env: string) {
+    const newEnv = env as Environments;
+    this.store.dispatch(DashboardActions.setNewEnvironment({ env: newEnv }));
   }
 
   ngOnDestroy() {

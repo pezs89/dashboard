@@ -5,14 +5,15 @@ import { RegionStatus, ServerStatus } from '../reducers/region-list.reducer';
 export const serverStatusResponseTransformHelper = (
   regions: Region[],
   responsesMarket: HttpResponseBase[],
-  responsesWs: HttpResponseBase[]
+  responsesWs: HttpResponseBase[],
+  env: string
 ): RegionStatus[] => {
   return regions.reduce((acc, curr, index) => {
-    const values = Object.values(curr.markets) as string[];
-    const newVals = values.map((value) =>
-      responsesMarket.find((response) => response.url === value)
+    const values = Object.values(curr.markets[env]) as string[];
+    const newVals = values.map(value =>
+      responsesMarket.find(response => response.url === value)
     );
-    const keys = Object.keys(curr.markets);
+    const keys = Object.keys(curr.markets[env]);
     const newStatuses = keys.reduce((initial, val, statusIndex) => {
       initial[val] = createServerStatus(newVals, statusIndex);
       return initial;

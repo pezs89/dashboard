@@ -6,6 +6,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +22,7 @@ import { CoreModule } from './core/core.module';
     HttpClientModule,
     AppRoutingModule,
     CoreModule,
+    NgxUiLoaderModule,
     StoreModule.forRoot(appReducers, {
       runtimeChecks: { strictStateImmutability: true },
     }),

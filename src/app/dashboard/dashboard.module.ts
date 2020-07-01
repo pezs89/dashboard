@@ -15,6 +15,7 @@ import { MarketServerStatusComponent } from './components/market-server-status/m
 import * as fromDashboard from './reducers/index';
 import { DashboardEffects } from './effects/dashboard.effects';
 import { RegionListEffects } from './effects/region-list.effects';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
 
 const CONTAINERS = [DashboardPageComponent, RegionListComponent];
 const COMPONENTS = [RegionCardComponent, MarketServerStatusComponent];
