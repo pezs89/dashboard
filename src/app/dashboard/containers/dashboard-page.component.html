@@ -1,26 +1,5 @@
 <div class="dashboard">
-  <div class="dashboard__links">
-    <div
-      class="dashboard__link"
-      [ngClass]="{
-        'dashboard__link--active': (environment$ | async) === 'prod'
-      }"
-      (click)="setEnvironment('prod')"
-    >
-      PROD
-    </div>
-    <div
-      class="dashboard__link"
-      [ngClass]="{
-        'dashboard__link--active': (environment$ | async) === 'qaf'
-      }"
-      (click)="setEnvironment('qaf')"
-    >
-      QAF
-    </div>
-  </div>
   <section class="">
     <app-region-list></app-region-list>
   </section>
 </div>
-

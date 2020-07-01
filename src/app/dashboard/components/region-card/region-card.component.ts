@@ -1,9 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  ChangeDetectionStrategy,
-} from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { RegionStatus } from '../../reducers/region-list.reducer';
 
 @Component({
@@ -12,10 +7,7 @@ import { RegionStatus } from '../../reducers/region-list.reducer';
   styleUrls: ['./region-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RegionCardComponent implements OnInit {
+export class RegionCardComponent {
   @Input() region: RegionStatus;
   term: string;
-  constructor() {}
-
-  ngOnInit() {}
 }

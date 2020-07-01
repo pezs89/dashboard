@@ -10,8 +10,9 @@ import { Observable, timer, Subject } from 'rxjs';
 
 import { AppState } from 'src/app/reducers/app.reducer';
 import { DashboardActions } from '../actions';
-import { Environments } from '../reducers/dashboard.reducer';
+import { Environments, Region } from '../reducers/dashboard.reducer';
 import * as fromDashboard from '../reducers/index';
+import { transformDashboardData } from '../utils/dashboard-data-transform-helper';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -20,7 +21,7 @@ import * as fromDashboard from '../reducers/index';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardPageComponent implements OnInit, OnDestroy {
-  environment$: Observable<Environments>;
+  regions$: Observable<Region[]>;
   private destroy$ = new Subject();
 
   constructor(private store: Store<AppState>) {}
@@ -29,20 +30,33 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     timer(0, 10 * 60 * 1000)
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {
-        this.environment$ = this.store.pipe(
-          select(fromDashboard.selectSelectedEnvirontmentSate)
+        this.regions$ = this.store.pipe(
+          select(fromDashboard.selectDashboardRegionsState)
         );
-        this.environment$.subscribe(environment => {
+        this.regions$.subscribe(regions => {
+          console.log(regions);
+          const regionMarkets = regions.map(region => region.markets);
+          const regionUrls = transformDashboardData(regionMarkets);
+          const wsUrlProd = regions.map(region => region.webserviceUrls.prod);
+          const wsUrlQaf = regions.map(region => region.webserviceUrls.qaf);
           this.store.dispatch(
-            DashboardActions.getNewServerStatuses({ environment })
+            DashboardActions.getServerStatusesRequest({
+              regions,
+              regionUrls: regionUrls.prod,
+              wsUrls: wsUrlProd,
+              env: Environments.PROD,
+            })
+          );
+          this.store.dispatch(
+            DashboardActions.getServerStatusesRequest({
+              regions,
+              regionUrls: regionUrls.qaf,
+              wsUrls: wsUrlQaf,
+              env: Environments.QAF,
+            })
           );
         });
       });
-  }
-
-  setEnvironment(env: string) {
-    const newEnv = env as Environments;
-    this.store.dispatch(DashboardActions.setNewEnvironment({ env: newEnv }));
   }
 
   ngOnDestroy() {

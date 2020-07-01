@@ -17,13 +17,11 @@ export interface Region {
 }
 
 export interface DashboardState {
-  selectedEnvironment: Environments;
   regions: Region[];
   loading: boolean;
 }
 
 export const initialState: DashboardState = {
-  selectedEnvironment: Environments.PROD,
   loading: false,
   regions: [
     {
@@ -142,9 +140,5 @@ export const reducer = createReducer(
   on(DashboardActions.getServerStatusesSuccess, state => ({
     ...state,
     loading: false,
-  })),
-  on(DashboardActions.setNewEnvironment, (state, action) => ({
-    ...state,
-    selectedEnvironment: action.env,
   }))
 );
