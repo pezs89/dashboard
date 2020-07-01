@@ -9,8 +9,11 @@ export enum Environments {
 }
 export interface Region {
   regionCode: string;
-  webserviceUrl: string;
-  markets: { [key: string]: { [key: string]: string } };
+  webserviceUrls: {
+    qaf: string;
+    prod: string;
+  };
+  markets: { qaf: { [key: string]: string }; prod: { [key: string]: string } };
 }
 
 export interface DashboardState {
@@ -25,8 +28,12 @@ export const initialState: DashboardState = {
   regions: [
     {
       regionCode: 'RU',
-      webserviceUrl:
-        'https://choiceservices-ru.avon.com/myavon/reporting/v1/rest/swagger',
+      webserviceUrls: {
+        qaf:
+          'https://choiceservicesqaf.avon.com/myavon/reporting/v1/rest/swagger',
+        prod:
+          'https://choiceservices-ru.avon.com/myavon/reporting/v1/rest/swagger',
+      },
       markets: {
         qaf: {
           ru: 'https://qaf.office.avon.ru/ru/Login?targetPage=/RU/Dashboard',
@@ -38,8 +45,13 @@ export const initialState: DashboardState = {
     },
     {
       regionCode: 'WEMEA',
-      webserviceUrl:
-        'https://myavonservices-us-eu.avon.com/myavon/reporting/v1/rest/swagger',
+      webserviceUrls: {
+        qaf:
+          'https://choiceservicesqaf.avon.com/myavon/reporting/v1/rest/swagger',
+        prod:
+          'https://myavonservices-us-eu.avon.com/myavon/reporting/v1/rest/swagger',
+      },
+
       markets: {
         qaf: {
           es: 'https://qaf.office.avon.es/es/Login',
@@ -62,8 +74,12 @@ export const initialState: DashboardState = {
     },
     {
       regionCode: 'CEE',
-      webserviceUrl:
-        'https://choiceservices-uk.avon.com/myavon/reporting/v1/rest/swagger',
+      webserviceUrls: {
+        qaf:
+          'https://choiceservicesqaf.avon.com/myavon/reporting/v1/rest/swagger',
+        prod:
+          'https://choiceservices-uk.avon.com/myavon/reporting/v1/rest/swagger',
+      },
       markets: {
         qaf: {
           hu: 'https://qaf.office.avon.hu/hu/Login?targetPage=/HU/Dashboard',
@@ -91,8 +107,12 @@ export const initialState: DashboardState = {
     },
     {
       regionCode: 'LATAM',
-      webserviceUrl:
-        'https://myavonservices-us-la.avon.com/myavon/reporting/v1/rest/swagger',
+      webserviceUrls: {
+        qaf:
+          'https://choiceservicesqaf.avon.com/myavon/reporting/v1/rest/swagger',
+        prod:
+          'https://myavonservices-us-la.avon.com/myavon/reporting/v1/rest/swagger',
+      },
       markets: {
         qaf: {
           ar: 'https://qaf.office.avon.com.ar/',

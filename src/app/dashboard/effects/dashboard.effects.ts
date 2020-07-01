@@ -25,7 +25,9 @@ export class DashboardEffects {
         const { environment } = action;
         const regionMarkets = regions.map(region => region.markets);
         const regionUrls = transformDashboardData(regionMarkets);
-        const wsUrls = regions.map(region => region.webserviceUrl);
+        const wsUrls = regions.map(
+          region => region.webserviceUrls[action.environment]
+        );
         return of(
           DashboardActions.getServerStatusesRequest({
             regions,
@@ -65,7 +67,6 @@ export class DashboardEffects {
               wsServerResponse,
               env
             );
-            this.ngxLoader.stop();
             return DashboardActions.getServerStatusesSuccess({
               regions: transformedResponse,
             });
@@ -73,6 +74,17 @@ export class DashboardEffects {
         )
       )
     )
+  );
+
+  hideLoader$ = createEffect(
+    () =>
+      this.action$.pipe(
+        ofType(DashboardActions.getServerStatusesSuccess),
+        tap(() => {
+          this.ngxLoader.stop();
+        })
+      ),
+    { dispatch: false }
   );
 
   constructor(
