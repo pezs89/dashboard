@@ -10,9 +10,14 @@ export class RegionListEffects {
   loadServerStatuses$ = createEffect(() =>
     this.action$.pipe(
       ofType(DashboardActions.getServerStatusesSuccess),
-      map((action) => action.regions),
-      concatMap((regionStatuses) =>
-        of(RegionListActions.loadRegionListStatus({ regionStatuses }))
+      map(action => ({ env: action.env, regions: action.regions })),
+      concatMap(({ env, regions }) =>
+        of(
+          RegionListActions.loadRegionListStatus({
+            regionStatuses: regions,
+            env,
+          })
+        )
       )
     )
   );

@@ -36,20 +36,20 @@ export const selectDashboardModuleState = createFeatureSelector<
 
 export const selectDashboardIsLoading = createSelector(
   selectDashboardModuleState,
-  (state) => state[fromDashboard.dashboardFeatureKey].loading
+  state => state[fromDashboard.dashboardFeatureKey].loading
 );
 
 export const selectDashboardRegionsState = createSelector(
   selectDashboardModuleState,
-  (state) => state[fromDashboard.dashboardFeatureKey].regions
+  state => state[fromDashboard.dashboardFeatureKey].regions
 );
 
-export const selectSelectedEnvirontmentSate = createSelector(
+export const selectRegionListProdState = createSelector(
   selectDashboardModuleState,
-  (state) => state[fromDashboard.dashboardFeatureKey].selectedEnvironment
+  state => state[fromRegionList.regionListFeatureKey].prod
 );
 
-export const selectRegionListState = createSelector(
+export const selectRegionListQafState = createSelector(
   selectDashboardModuleState,
-  (state) => state[fromRegionList.regionListFeatureKey].regionStatuses
+  state => state[fromRegionList.regionListFeatureKey].qaf
 );

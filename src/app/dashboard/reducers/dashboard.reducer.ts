@@ -10,27 +10,30 @@ export enum Environments {
 }
 export interface Region {
   regionCode: string;
-  webserviceUrl: string;
-  webserviceUrlQaf?: string;
-  markets: { [key: string]: { [key: string]: string } };
+  webserviceUrls: {
+    qaf: string;
+    prod: string;
+  };
+  markets: { qaf: { [key: string]: string }; prod: { [key: string]: string }, dev?: { [key: string]: string }};
 }
 
 export interface DashboardState {
-  selectedEnvironment: Environments;
   regions: Region[];
   loading: boolean;
 }
 
 
 export const initialState: DashboardState = {
-  selectedEnvironment: Environments.PROD,
   loading: false,
   regions: [
     {
       regionCode: 'RU',
-      webserviceUrlQaf: 'https://choiceservicesqaf.avon.com/myavon/reporting/v1/rest/swagger',
-      webserviceUrl:
-        'https://choiceservices-ru.avon.com/myavon/reporting/v1/rest/swagger',
+      webserviceUrls: {
+        qaf:
+          'https://choiceservicesqaf.avon.com/myavon/reporting/v1/rest/swagger',
+        prod:
+          'https://choiceservices-ru.avon.com/myavon/reporting/v1/rest/swagger',
+      },
       markets: {
         dev: {
           ru: 'https://dev.office.avon.ru'
@@ -45,8 +48,13 @@ export const initialState: DashboardState = {
     },
     {
       regionCode: 'WEMEA',
-      webserviceUrl:
-        'https://myavonservices-us-eu.avon.com/myavon/reporting/v1/rest/swagger',
+      webserviceUrls: {
+        qaf:
+          'https://choiceservicesqaf.avon.com/myavon/reporting/v1/rest/swagger',
+        prod:
+          'https://myavonservices-us-eu.avon.com/myavon/reporting/v1/rest/swagger',
+      },
+
       markets: {
         dev: {
           uk: 'https://dev.office.avon.uk',
@@ -76,8 +84,12 @@ export const initialState: DashboardState = {
     },
     {
       regionCode: 'CEE',
-      webserviceUrl:
-        'https://choiceservices-uk.avon.com/myavon/reporting/v1/rest/swagger',
+      webserviceUrls: {
+        qaf:
+          'https://choiceservicesqaf.avon.com/myavon/reporting/v1/rest/swagger',
+        prod:
+          'https://choiceservices-uk.avon.com/myavon/reporting/v1/rest/swagger',
+      },
       markets: {
         dev: {
           ro: 'https://dev.office.avon.ro',
@@ -112,8 +124,12 @@ export const initialState: DashboardState = {
     },
     {
       regionCode: 'LATAM',
-      webserviceUrl:
-        'https://myavonservices-us-la.avon.com/myavon/reporting/v1/rest/swagger',
+      webserviceUrls: {
+        qaf:
+          'https://choiceservicesqaf.avon.com/myavon/reporting/v1/rest/swagger',
+        prod:
+          'https://myavonservices-us-la.avon.com/myavon/reporting/v1/rest/swagger',
+      },
       markets: {
         qaf: {
           ar: 'https://qaf.office.avon.com.ar/',
@@ -143,9 +159,5 @@ export const reducer = createReducer(
   on(DashboardActions.getServerStatusesSuccess, state => ({
     ...state,
     loading: false,
-  })),
-  on(DashboardActions.setNewEnvironment, (state, action) => ({
-    ...state,
-    selectedEnvironment: action.env,
   }))
 );

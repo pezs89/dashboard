@@ -15,14 +15,18 @@ import { fadeIn } from 'src/app/shared/animations/fade-in';
   animations: [fadeIn],
 })
 export class RegionListComponent implements OnInit {
-  regions$: Observable<RegionStatus[]>;
+  regionsProd$: Observable<RegionStatus[]>;
+  regionsQaf$: Observable<RegionStatus[]>;
   loading$: Observable<boolean>;
 
   constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
-    this.regions$ = this.store.pipe(
-      select(fromDashboard.selectRegionListState)
+    this.regionsQaf$ = this.store.pipe(
+      select(fromDashboard.selectRegionListQafState)
+    );
+    this.regionsProd$ = this.store.pipe(
+      select(fromDashboard.selectRegionListProdState)
     );
     this.loading$ = this.store.pipe(
       select(fromDashboard.selectDashboardIsLoading)

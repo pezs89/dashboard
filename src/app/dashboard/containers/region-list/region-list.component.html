@@ -1,9 +1,20 @@
 <div class="region-list">
   <ng-container *ngIf="!(loading$ | async)">
-    <app-region-card
-      [@fadeIn]
-      *ngFor="let region of regions$ | async"
-      [region]="region"
-    ></app-region-card>
+    <h3 class="region-list__title">PROD</h3>
+    <div class="region-list__cards">
+      <app-region-card
+        [@fadeIn]
+        *ngFor="let region of regionsProd$ | async"
+        [region]="region"
+      ></app-region-card>
+    </div>
+    <h3 class="region-list__title">QAF</h3>
+    <div class="region-list__cards">
+      <app-region-card
+        [@fadeIn]
+        *ngFor="let region of regionsQaf$ | async"
+        [region]="region"
+      ></app-region-card>
+    </div>
   </ng-container>
 </div>

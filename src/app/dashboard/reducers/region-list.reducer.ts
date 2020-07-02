@@ -20,11 +20,58 @@ export interface RegionStatus {
 }
 
 export interface RegionStatusesState {
-  regionStatuses: RegionStatus[];
+  qaf: RegionStatus[];
+  prod: RegionStatus[];
 }
 
 export const initialState: RegionStatusesState = {
-  regionStatuses: [
+  qaf: [
+    {
+      regionCode: 'RU',
+      wsStatus: {},
+      status: {
+        ru: {},
+      },
+    },
+    {
+      regionCode: 'WEMEA',
+      wsStatus: {},
+      status: {
+        es: {},
+        it: {},
+        jt: {},
+        tr: {},
+        uk: {},
+        za: {},
+      },
+    },
+    {
+      regionCode: 'CEE',
+      wsStatus: {},
+      status: {
+        bg: {},
+        cz: {},
+        de: {},
+        hu: {},
+        pl: {},
+        ro: {},
+        rs: {},
+        sk: {},
+        ua: {},
+      },
+    },
+    {
+      regionCode: 'LATAM',
+      wsStatus: {},
+      status: {
+        ar: {},
+        co: {},
+        ec: {},
+        pe: {},
+      },
+    },
+  ],
+  prod: [
     {
       regionCode: 'RU',
       wsStatus: {},
@@ -76,6 +123,6 @@ export const reducer = createReducer(
   initialState,
   on(RegionListActions.loadRegionListStatus, (state, action) => ({
     ...state,
-    regionStatuses: action.regionStatuses,
+    [action.env]: action.regionStatuses,
   }))
 );
