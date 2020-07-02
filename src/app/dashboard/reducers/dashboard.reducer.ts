@@ -6,10 +6,12 @@ export const dashboardFeatureKey = 'dashboard';
 export enum Environments {
   PROD = 'prod',
   QAF = 'qaf',
+  DEV = 'dev'
 }
 export interface Region {
   regionCode: string;
   webserviceUrl: string;
+  webserviceUrlQaf?: string;
   markets: { [key: string]: { [key: string]: string } };
 }
 
@@ -19,15 +21,20 @@ export interface DashboardState {
   loading: boolean;
 }
 
+
 export const initialState: DashboardState = {
   selectedEnvironment: Environments.PROD,
   loading: false,
   regions: [
     {
       regionCode: 'RU',
+      webserviceUrlQaf: 'https://choiceservicesqaf.avon.com/myavon/reporting/v1/rest/swagger',
       webserviceUrl:
         'https://choiceservices-ru.avon.com/myavon/reporting/v1/rest/swagger',
       markets: {
+        dev: {
+          ru: 'https://dev.office.avon.ru'
+        },
         qaf: {
           ru: 'https://qaf.office.avon.ru/ru/Login?targetPage=/RU/Dashboard',
         },
@@ -41,6 +48,13 @@ export const initialState: DashboardState = {
       webserviceUrl:
         'https://myavonservices-us-eu.avon.com/myavon/reporting/v1/rest/swagger',
       markets: {
+        dev: {
+          uk: 'https://dev.office.avon.uk',
+          it: 'https://dev.office.avon.it',
+          mt: 'https://dev.office.avon.mt',
+          tr: 'https://dev.office.avon.tr',
+          za: 'https://dev.office.avon.za'
+        },
         qaf: {
           es: 'https://qaf.office.avon.es/es/Login',
           it: 'https://qaf.office.avon.it/',
@@ -65,6 +79,13 @@ export const initialState: DashboardState = {
       webserviceUrl:
         'https://choiceservices-uk.avon.com/myavon/reporting/v1/rest/swagger',
       markets: {
+        dev: {
+          ro: 'https://dev.office.avon.ro',
+          ro2: 'https://dev.seconddomain.office.avon.ro',
+          cz: 'https://dev.office.avon.cz',
+          hu: 'https://dev.office.avon.hu',
+          pl: 'https://dev.office.avon.pl'
+        },
         qaf: {
           hu: 'https://qaf.office.avon.hu/hu/Login?targetPage=/HU/Dashboard',
           bg: 'https://qaf.office.avon.bg/Login.html',
