@@ -1,4 +1,4 @@
-<div class="region-card">
+<div class="region-card" *ngIf="(region.status | objKey).length > 0">
   <h2 class="region-card__title">{{ region.regionCode }}</h2>
   <div class="region-card__webservice">
     <app-market-server-status

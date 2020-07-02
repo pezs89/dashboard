@@ -22,6 +22,7 @@ export interface RegionStatus {
 export interface RegionStatusesState {
   qaf: RegionStatus[];
   prod: RegionStatus[];
+  dev: RegionStatus[];
 }
 
 export const initialState: RegionStatusesState = {
@@ -72,6 +73,52 @@ export const initialState: RegionStatusesState = {
     },
   ],
   prod: [
+    {
+      regionCode: 'RU',
+      wsStatus: {},
+      status: {
+        ru: {},
+      },
+    },
+    {
+      regionCode: 'WEMEA',
+      wsStatus: {},
+      status: {
+        es: {},
+        it: {},
+        jt: {},
+        tr: {},
+        uk: {},
+        za: {},
+      },
+    },
+    {
+      regionCode: 'CEE',
+      wsStatus: {},
+      status: {
+        bg: {},
+        cz: {},
+        de: {},
+        hu: {},
+        pl: {},
+        ro: {},
+        rs: {},
+        sk: {},
+        ua: {},
+      },
+    },
+    {
+      regionCode: 'LATAM',
+      wsStatus: {},
+      status: {
+        ar: {},
+        co: {},
+        ec: {},
+        pe: {},
+      },
+    },
+  ],
+  dev: [
     {
       regionCode: 'RU',
       wsStatus: {},

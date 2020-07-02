@@ -16,5 +16,13 @@
         [region]="region"
       ></app-region-card>
     </div>
+    <h3 class="region-list__title">DEV</h3>
+    <div class="region-list__cards">
+      <app-region-card
+        [@fadeIn]
+        *ngFor="let region of regionsDev$ | async"
+        [region]="region"
+      ></app-region-card>
+    </div>
   </ng-container>
 </div>

@@ -9,12 +9,13 @@ export const transformDashboardData = (
     .map(markets => Object.keys(markets))
     .reduce(
       (acc, curr, index) => {
-        const [qaf, prod] = curr;
+        const [dev, qaf, prod] = curr;
         const marketUrls = curr.map(key => regionMarkets[index][key]);
         const marketUrlsByEnv = marketUrls.map(urls => Object.values(urls));
-        acc[qaf].push(...marketUrlsByEnv[0]);
-        acc[prod].push(...marketUrlsByEnv[1]);
+        acc[dev].push(...marketUrlsByEnv[0]);
+        acc[qaf].push(...marketUrlsByEnv[1]);
+        acc[prod].push(...marketUrlsByEnv[2]);
         return acc;
       },
-      { qaf: [] as string[], prod: [] as string[] }
+      { qaf: [] as string[], prod: [] as string[], dev: [] as string[] }
     );

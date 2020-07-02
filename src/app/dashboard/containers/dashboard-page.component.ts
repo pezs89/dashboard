@@ -34,7 +34,6 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
           select(fromDashboard.selectDashboardRegionsState)
         );
         this.regions$.subscribe(regions => {
-          console.log(regions);
           const regionMarkets = regions.map(region => region.markets);
           const regionUrls = transformDashboardData(regionMarkets);
           const wsUrlProd = regions.map(region => region.webserviceUrls.prod);
@@ -53,6 +52,14 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
               regionUrls: regionUrls.qaf,
               wsUrls: wsUrlQaf,
               env: Environments.QAF,
+            })
+          );
+          this.store.dispatch(
+            DashboardActions.getServerStatusesRequest({
+              regions,
+              regionUrls: regionUrls.dev,
+              wsUrls: wsUrlQaf,
+              env: Environments.DEV,
             })
           );
         });

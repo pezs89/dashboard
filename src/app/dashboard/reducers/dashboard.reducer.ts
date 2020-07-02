@@ -131,6 +131,7 @@ export const initialState: DashboardState = {
           'https://myavonservices-us-la.avon.com/myavon/reporting/v1/rest/swagger',
       },
       markets: {
+        dev: {},
         qaf: {
           ar: 'https://qaf.office.avon.com.ar/',
           co: 'https://qaf.office.avon.co/',
