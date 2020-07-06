@@ -6,7 +6,7 @@ export const dashboardFeatureKey = 'dashboard';
 export enum Environments {
   PROD = 'prod',
   QAF = 'qaf',
-  DEV = 'dev'
+  DEV = 'dev',
 }
 export interface Region {
   regionCode: string;
@@ -14,14 +14,17 @@ export interface Region {
     qaf: string;
     prod: string;
   };
-  markets: { qaf: { [key: string]: string }; prod: { [key: string]: string }, dev?: { [key: string]: string }};
+  markets: {
+    qaf: { [key: string]: string };
+    prod: { [key: string]: string };
+    dev?: { [key: string]: string };
+  };
 }
 
 export interface DashboardState {
   regions: Region[];
   loading: boolean;
 }
-
 
 export const initialState: DashboardState = {
   loading: false,
@@ -36,7 +39,7 @@ export const initialState: DashboardState = {
       },
       markets: {
         dev: {
-          ru: 'https://dev.office.avon.ru'
+          ru: 'https://dev.office.avon.ru',
         },
         qaf: {
           ru: 'https://qaf.office.avon.ru/ru/Login?targetPage=/RU/Dashboard',
@@ -61,7 +64,7 @@ export const initialState: DashboardState = {
           it: 'https://dev.office.avon.it',
           mt: 'https://dev.office.avon.mt',
           tr: 'https://dev.office.avon.tr',
-          za: 'https://dev.office.avon.za'
+          za: 'https://dev.office.avon.za',
         },
         qaf: {
           es: 'https://qaf.office.avon.es/es/Login',
@@ -70,6 +73,8 @@ export const initialState: DashboardState = {
           za: 'https://qaf.office.avon.co.za/en/Login',
           uk: 'https://qaf.office.avon.uk.com/UK/Login.html',
           tr: 'https://qaf.office.avon.com.tr/tr/Login',
+          mt:
+            'https://qaf.office.avon.com.mt/en/Login?targetPage=/MT/Dashboard',
         },
         prod: {
           es: 'https://mao.avon.es/es_maintenance.html',
@@ -96,7 +101,7 @@ export const initialState: DashboardState = {
           ro2: 'https://dev.seconddomain.office.avon.ro',
           cz: 'https://dev.office.avon.cz',
           hu: 'https://dev.office.avon.hu',
-          pl: 'https://dev.office.avon.pl'
+          pl: 'https://dev.office.avon.pl',
         },
         qaf: {
           hu: 'https://qaf.office.avon.hu/hu/Login?targetPage=/HU/Dashboard',
@@ -133,10 +138,13 @@ export const initialState: DashboardState = {
       markets: {
         dev: {},
         qaf: {
-          ar: 'https://qaf.office.avon.com.ar/es/Login?targetPage=/AR/Dashboard',
+          ar:
+            'https://qaf.office.avon.com.ar/es/Login?targetPage=/AR/Dashboard',
           co: 'https://qaf.office.avon.co/es/Login?targetPage=/CO/Dashboard',
-          ec: 'https://qaf.office.avon.com.ec/es/Login?targetPage=/EC/Dashboard',
-          pe: 'https://qaf.office.avon.com.pe/es/Login?targetPage=/PE/Dashboard',
+          ec:
+            'https://qaf.office.avon.com.ec/es/Login?targetPage=/EC/Dashboard',
+          pe:
+            'https://qaf.office.avon.com.pe/es/Login?targetPage=/PE/Dashboard',
         },
         prod: {
           ar:
