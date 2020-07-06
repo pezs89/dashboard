@@ -3,6 +3,8 @@
   [tooltip]="tooltipTemplate"
   content-type="template"
   hide-delay="0"
+  [width]="300"
+  [max-width]="300"
   [ngClass]="{
     'market-status--active': marketStatus.serverResponseCode === 200,
     'market-status--error': marketStatus.serverResponseCode !== 200
@@ -27,6 +29,12 @@
 
 <ng-template #tooltipTemplate>
   <div class="tooltip">
+    <div class="tooltip__info">
+      <div>Url:</div>
+      <div>
+        {{ marketStatus.url }}
+      </div>
+    </div>
     <div class="tooltip__info">
       <div>Server Status:</div>
       <div>
