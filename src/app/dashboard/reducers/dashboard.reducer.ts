@@ -65,7 +65,7 @@ export const initialState: DashboardState = {
         },
         qaf: {
           es: 'https://qaf.office.avon.es/es/Login',
-          it: 'https://qaf.office.avon.it/',
+          it: 'https://qaf.office.avon.it/it/Login?targetPage=/IT/Dashboard',
           jt: 'https://qaf.office.justine.co.za/',
           za: 'https://qaf.office.avon.co.za/en/Login',
           uk: 'https://qaf.office.avon.uk.com/UK/Login.html',
@@ -133,10 +133,10 @@ export const initialState: DashboardState = {
       markets: {
         dev: {},
         qaf: {
-          ar: 'https://qaf.office.avon.com.ar/',
-          co: 'https://qaf.office.avon.co/',
-          ec: 'https://qaf.office.avon.com.ec/',
-          pe: 'https://qaf.office.avon.com.pe/',
+          ar: 'https://qaf.office.avon.com.ar/es/Login?targetPage=/AR/Dashboard',
+          co: 'https://qaf.office.avon.co/es/Login?targetPage=/CO/Dashboard',
+          ec: 'https://qaf.office.avon.com.ec/es/Login?targetPage=/EC/Dashboard',
+          pe: 'https://qaf.office.avon.com.pe/es/Login?targetPage=/PE/Dashboard',
         },
         prod: {
           ar:
