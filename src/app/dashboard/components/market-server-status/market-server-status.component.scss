@@ -45,7 +45,14 @@
     display: flex;
     flex-direction: row;
     div {
+      &:first-child {
+        width: 20%;
+      }
       &:last-child {
+        width: 80%;
+        white-space: pre-wrap;
+        word-wrap: break-all;
+        overflow: hidden;
         font-weight: 500;
       }
     }
