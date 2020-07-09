@@ -17,6 +17,7 @@ import { fadeIn } from 'src/app/shared/animations/fade-in';
 export class RegionListComponent implements OnInit {
   regionsProd$: Observable<RegionStatus[]>;
   regionsQaf$: Observable<RegionStatus[]>;
+  regionsQam$: Observable<RegionStatus[]>;
   regionsDev$: Observable<RegionStatus[]>;
   loading$: Observable<boolean>;
 
@@ -28,6 +29,9 @@ export class RegionListComponent implements OnInit {
     );
     this.regionsProd$ = this.store.pipe(
       select(fromDashboard.selectRegionListProdState)
+    );
+    this.regionsQam$ = this.store.pipe(
+      select(fromDashboard.selectRegionListQamState)
     );
     this.regionsDev$ = this.store.pipe(
       select(fromDashboard.selectRegionListDevState)

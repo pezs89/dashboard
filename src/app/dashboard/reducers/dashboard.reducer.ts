@@ -6,6 +6,7 @@ export const dashboardFeatureKey = 'dashboard';
 export enum Environments {
   PROD = 'prod',
   QAF = 'qaf',
+  QAM = 'qam',
   DEV = 'dev',
 }
 export interface Region {
@@ -13,10 +14,12 @@ export interface Region {
   webserviceUrls: {
     qaf: string;
     prod: string;
+    qam?: string;
   };
   markets: {
     qaf: { [key: string]: string };
     prod: { [key: string]: string };
+    qam?: { [key: string]: string };
     dev?: { [key: string]: string };
   };
 }
@@ -34,6 +37,8 @@ export const initialState: DashboardState = {
       webserviceUrls: {
         qaf:
           'https://choiceservicesqaf.avon.com/myavon/reporting/v1/rest/swagger',
+          qam:
+          'https://choiceservicesqam.avon.com/myavon/reporting/v1/rest/swagger',
         prod:
           'https://choiceservices-ru.avon.com/myavon/reporting/v1/rest/swagger',
       },
@@ -43,6 +48,9 @@ export const initialState: DashboardState = {
         },
         qaf: {
           ru: 'https://qaf.office.avon.ru/ru/Login?targetPage=/RU/Dashboard',
+        },
+        qam: {
+          ru: 'https://qam.office.avon.ru/ru/Login?targetPage=/RU/Dashboard'
         },
         prod: {
           ru: 'https://myoffice.avon.ru/ru/Login?targetPage=/RU/Dashboard',
@@ -56,6 +64,8 @@ export const initialState: DashboardState = {
           'https://choiceservicesqaf.avon.com/myavon/reporting/v1/rest/swagger',
         prod:
           'https://myavonservices-us-eu.avon.com/myavon/reporting/v1/rest/swagger',
+          qam:
+          'https://choiceservicesqam.avon.com/myavon/reporting/v1/rest/swagger',
       },
 
       markets: {
@@ -76,6 +86,12 @@ export const initialState: DashboardState = {
           mt:
             'https://qaf.office.avon.com.mt/en/Login?targetPage=/MT/Dashboard',
         },
+        qam: {
+          za: 'https://qam.office.avon.co.za/en/Login',
+          tr: 'https://qam.office.avon.com.tr/tr/Login',
+          uk: 'https://qam.office.avon.uk.com/UK/Login.html',
+          it: 'https://qam.office.avon.it/it/Login?targetPage=/IT/Dashboard',
+        },
         prod: {
           es: 'https://mao.avon.es/es_maintenance.html',
           it: 'https://mao.avon.it/it/Login?targetPage=/IT/Dashboard',
@@ -92,6 +108,8 @@ export const initialState: DashboardState = {
       webserviceUrls: {
         qaf:
           'https://choiceservicesqaf.avon.com/myavon/reporting/v1/rest/swagger',
+          qam:
+          'https://choiceservicesqam.avon.com/myavon/reporting/v1/rest/swagger',
         prod:
           'https://choiceservices-uk.avon.com/myavon/reporting/v1/rest/swagger',
       },
@@ -113,6 +131,16 @@ export const initialState: DashboardState = {
           pl: 'https://qaf.office.avon.pl/pl/Login?targetPage=/PL/Dashboard',
           ua: 'https://qaf.office.avon.ua/uk/Login?targetPage=/UA/Dashboard',
           rs: 'https://qaf.office.avon.rs/RS/Login.html',
+        },
+        qam: {
+          cz: 'https://qam.office.avon.cz/cs/Login?targetPage=/CZ/Dashboard',
+          pl: 'https://qam.office.avon.pl/pl/Login?targetPage=/PL/Dashboard',
+          ro: 'https://qam.office.avon.ro/ro/Login?targetPage=/RO/Dashboard',
+          hu: 'https://qam.office.avon.hu/hu/Login?targetPage=/HU/Dashboard',
+          sk: 'https://qam.office.avon.sk/sk/Login?targetPage=/SK/Dashboard',
+          ua: 'https://qam.office.avon.ua/uk/Login?targetPage=/UA/Dashboard',
+          bg: 'https://qam.office.avon.bg/bg/Login?targetPage=/BG/Dashboard',
+          rs: 'https://qam.office.avon.rs/sr/Login?targetPage=/RS/Dashboard'
         },
         prod: {
           bg: 'https://office.avon.bg/bg/Login?targetPage=/BG/Dashboard',
@@ -137,6 +165,7 @@ export const initialState: DashboardState = {
       },
       markets: {
         dev: {},
+        qam: {},
         qaf: {
           ar:
             'https://qaf.office.avon.com.ar/es/Login?targetPage=/AR/Dashboard',

@@ -38,6 +38,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
           const regionUrls = transformDashboardData(regionMarkets);
           const wsUrlProd = regions.map(region => region.webserviceUrls.prod);
           const wsUrlQaf = regions.map(region => region.webserviceUrls.qaf);
+          const wsUrlQam = regions.map(region => region.webserviceUrls.qam);
           this.store.dispatch(
             DashboardActions.getServerStatusesRequest({
               regions,
@@ -52,6 +53,14 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
               regionUrls: regionUrls.qaf,
               wsUrls: wsUrlQaf,
               env: Environments.QAF,
+            })
+          );
+          this.store.dispatch(
+            DashboardActions.getServerStatusesRequest({
+              regions,
+              regionUrls: regionUrls.qam,
+              wsUrls: wsUrlQam,
+              env: Environments.QAM,
             })
           );
           this.store.dispatch(

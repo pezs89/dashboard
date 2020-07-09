@@ -23,6 +23,7 @@ export interface RegionStatusesState {
   qaf: RegionStatus[];
   prod: RegionStatus[];
   dev: RegionStatus[];
+  qam: RegionStatus[];
 }
 
 export const initialState: RegionStatusesState = {
@@ -161,6 +162,39 @@ export const initialState: RegionStatusesState = {
         co: {},
         ec: {},
         pe: {},
+      },
+    },
+  ],
+  qam: [
+    {
+      regionCode: 'RU',
+      wsStatus: {},
+      status: {
+        ru: {},
+      },
+    },
+    {
+      regionCode: 'WEMEA',
+      wsStatus: {},
+      status: {
+        it: {},
+        tr: {},
+        uk: {},
+        za: {},
+      },
+    },
+    {
+      regionCode: 'CEE',
+      wsStatus: {},
+      status: {
+        bg: {},
+        cz: {},
+        hu: {},
+        pl: {},
+        ro: {},
+        rs: {},
+        sk: {},
+        ua: {},
       },
     },
   ],

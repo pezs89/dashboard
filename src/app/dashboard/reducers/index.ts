@@ -59,3 +59,8 @@ export const selectRegionListDevState = createSelector(
   state => state[fromRegionList.regionListFeatureKey].dev
 );
 
+export const selectRegionListQamState = createSelector(
+  selectDashboardModuleState,
+  state => state[fromRegionList.regionListFeatureKey].qam
+);
+
