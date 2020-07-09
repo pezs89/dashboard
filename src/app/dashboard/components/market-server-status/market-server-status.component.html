@@ -36,18 +36,12 @@
       </div>
     </div>
     <div class="tooltip__info">
-      <div>Server Status:</div>
+      <div>Response:</div>
       <div>
-        {{ marketStatus.serverStatus }}
+        {{ marketStatus.serverResponseCode }}, 
+        {{ marketStatus.serverStatus }},
+        {{ marketStatus.responseType }}
       </div>
-    </div>
-    <div class="tooltip__info">
-      <div>Response Code:</div>
-      <div>{{ marketStatus.serverResponseCode }}</div>
-    </div>
-    <div class="tooltip__info">
-      <div>Response Type:</div>
-      <div>{{ marketStatus.responseType }}</div>
     </div>
     <div class="tooltip__info">
       <div>Last Updated:</div>
