@@ -87,6 +87,9 @@ export const initialState: DashboardState = {
             'https://qaf.office.avon.com.mt/en/Login?targetPage=/MT/Dashboard',
         },
         qam: {
+          mt: 'https://qam.office.avon.com.mt/en/Login?targetPage=/MT/Dashboard',
+          jt: 'https://qam.office.justine.co.za/',
+          es: 'https://qam.office.avon.es/es/Login',
           za: 'https://qam.office.avon.co.za/en/Login',
           tr: 'https://qam.office.avon.com.tr/tr/Login',
           uk: 'https://qam.office.avon.uk.com/UK/Login.html',
@@ -165,7 +168,11 @@ export const initialState: DashboardState = {
       },
       markets: {
         dev: {},
-        qam: {},
+        qam: {
+          co: 'https://qaf.office.avon.co/es/Login?targetPage=/CO/Dashboard',
+          ec: 'https://qam.office.avon.com.ec/Dashboard;jsessionid=D5C4CDC0F4749EBF0A48326DB5644444.mag_live_jvm1',
+          pe: 'https://qam.office.avon.com.pe/es/Login?targetPage=/PE/Dashboard'
+        },
         qaf: {
           ar:
             'https://qaf.office.avon.com.ar/es/Login?targetPage=/AR/Dashboard',
