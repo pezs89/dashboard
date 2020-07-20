@@ -79,7 +79,7 @@ export const initialState: DashboardState = {
         qaf: {
           es: 'https://qaf.office.avon.es/es/Login',
           it: 'https://qaf.office.avon.it/it/Login?targetPage=/IT/Dashboard',
-          jt: 'https://qaf.office.justine.co.za/',
+          jt: 'https://qaf.office.justine.co.za/en/Login',
           za: 'https://qaf.office.avon.co.za/en/Login',
           uk: 'https://qaf.office.avon.uk.com/UK/Login.html',
           tr: 'https://qaf.office.avon.com.tr/tr/Login',
@@ -88,7 +88,7 @@ export const initialState: DashboardState = {
         },
         qam: {
           mt: 'https://qam.office.avon.com.mt/en/Login?targetPage=/MT/Dashboard',
-          jt: 'https://qam.office.justine.co.za/',
+          jt: 'https://qam.office.justine.co.za/en/Login',
           es: 'https://qam.office.avon.es/es/Login',
           za: 'https://qam.office.avon.co.za/en/Login',
           tr: 'https://qam.office.avon.com.tr/tr/Login',
